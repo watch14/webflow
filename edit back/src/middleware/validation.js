@@ -6,6 +6,12 @@ const editorSchema = Joi.object({
   hero: Joi.object({
     title: Joi.string().required(),
     subtitle: Joi.string().required(),
+    titleColor: Joi.string()
+      .pattern(/^#[0-9A-Fa-f]{6}$/)
+      .required(),
+    subtitleColor: Joi.string()
+      .pattern(/^#[0-9A-Fa-f]{6}$/)
+      .required(),
     button: Joi.object({
       text: Joi.string().required(),
       href: Joi.string().required(),
@@ -24,6 +30,9 @@ const editorSchema = Joi.object({
   }).required(),
   navbar: Joi.object({
     logo: Joi.string().required(),
+    logoColor: Joi.string()
+      .pattern(/^#[0-9A-Fa-f]{6}$/)
+      .required(),
     links: Joi.array()
       .items(
         Joi.object({
@@ -31,6 +40,9 @@ const editorSchema = Joi.object({
           href: Joi.string().required(),
         })
       )
+      .required(),
+    linkColor: Joi.string()
+      .pattern(/^#[0-9A-Fa-f]{6}$/)
       .required(),
     cta: Joi.object({
       label: Joi.string().required(),
